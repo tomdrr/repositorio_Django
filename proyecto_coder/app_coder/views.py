@@ -37,3 +37,6 @@ def contacto(request):
 
 def profesores(request):
     return render(request , "profesores.html")
+
+def entregables(request):
+    return render(request , "entregables.html")
