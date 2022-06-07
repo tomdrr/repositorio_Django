@@ -15,7 +15,7 @@ def inicio(request):
 def cursos(request):
     cursos = Curso.objects.all() #importo toda la data de los cursos
     dicc = {"cursos" : cursos}
-    plantilla = loader.get_template("plantillas.html")
+    plantilla = loader.get_template("cursos.html")
     documento = plantilla.render(dicc)
     return HttpResponse(documento)
 

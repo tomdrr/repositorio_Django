@@ -1,0 +1,26 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block contenido %}
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Camada</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        {% for n in cursos %}
+        <th scope="row">{{n.id}}</th>
+        <td>{{n.nombre}}</td>
+        <td>{{n.camada}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}
