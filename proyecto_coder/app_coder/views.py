@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 from app_coder.models import *   #importo desde app_coder.models la clase Curso
-
+from app_coder.forms import Curso_formulario
 from django.template import loader
 # Create your views here.
 
@@ -40,3 +40,39 @@ def profesores(request):
 
 def entregables(request):
     return render(request , "entregables.html")
+
+
+
+
+
+def curso_formulario(request):
+
+    if request.method == "POST":
+
+        mi_formulario = Curso_formulario(request.POST)
+
+        if mi_formulario.is_valid():
+
+            datos = mi_formulario.cleaned_data
+
+            curso = Curso( nombre=datos['nombre'] , camada=datos['camada'] )
+            curso.save()
+            return render(request , "formulario.html")
+        
+    return render(request, "formulario.html")
+
+
+
+def buscar_curso(request):
+    return render(request , "buscar_curso.html")
+
+
+def buscar (request):
+    if request.POST ['nombre']:
+        nombre = request.POST['nombre']
+        cursos = Curso.objects.filter(nombre__icontains = nombre)
+        return render(request , "resultado_busqueda.html", {"cursos": cursos})
+    else:
+        return HttpResponse("No se encontro el curso")
+  
+
