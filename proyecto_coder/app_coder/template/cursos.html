@@ -18,9 +18,13 @@
         <th scope="row">{{n.id}}</th>
         <td>{{n.nombre}}</td>
         <td>{{n.camada}}</td>
+        <td><a href="{% url 'elimina_curso'  n.id %}">BORRAR</a></td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
 
+  <button>
+    <a href="alta_curso">Agregar Curso</a>
+  </button>
 {% endblock %}

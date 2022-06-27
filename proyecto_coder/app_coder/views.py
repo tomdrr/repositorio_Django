@@ -20,13 +20,13 @@ def cursos(request):
     return HttpResponse(documento)
 
 
-
+"""
 def alta_curso(request, nombre):
     curso= Curso (nombre=nombre , camada = 12365)
     curso.save()
     texto =f"Se guardo en la BD el Curso: {curso.nombre} Camada: {curso.camada}"
     return HttpResponse(texto)
-
+"""
 
 def alumnos(request):
     return render(request , "alumnos.html")
@@ -76,3 +76,12 @@ def buscar (request):
         return HttpResponse("No se encontro el curso")
   
 
+
+
+def elimina_curso(request , id):
+
+    curso = Curso.objects.get(id=id)
+    curso.delete()
+
+    curso = Curso.objects.all()
+    return render(request , "cursos.html" , {"cursos": curso})
