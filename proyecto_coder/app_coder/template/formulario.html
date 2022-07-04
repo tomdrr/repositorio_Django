@@ -4,7 +4,7 @@
 
 {% block contenido %}
 
-    <form action="{% url 'formulario' %}" method="POST">
+    <form action="{% url 'Nuevo_curso' %}" method="POST">
         {% csrf_token %} 
         <p>Nombre:</p>
         <input type="text" name="nombre" required>

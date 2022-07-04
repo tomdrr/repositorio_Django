@@ -8,7 +8,7 @@ from app_coder.forms import Curso_formulario
 from django.template import loader
 from django.contrib.auth.forms import AuthenticationForm , UserCreationForm
 from django.contrib.auth import login , authenticate
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -48,7 +48,7 @@ def entregables(request):
 
 
 
-
+@login_required
 def curso_formulario(request):
 
     if request.method == "POST":
@@ -81,7 +81,7 @@ def buscar (request):
   
 
 
-
+@login_required
 def elimina_curso(request , id):
 
     curso = Curso.objects.get(id=id)
@@ -91,7 +91,7 @@ def elimina_curso(request , id):
     return render(request , "cursos.html" , {"cursos": curso})
 
 
-
+@login_required
 def editar( request , id):
 
     curso = Curso.objects.get(id=id)
@@ -150,9 +150,6 @@ def register(request):
         if form.is_valid():
             form.save()
             return HttpResponse("Usuario Creado")   
-
-
-
 
 
     else:
