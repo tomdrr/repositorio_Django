@@ -1,8 +1,9 @@
+from lzma import FORMAT_ALONE
 from this import d
 from django.http import HttpResponse
 from django.shortcuts import render
 
-from app_coder.models import *   #importo desde app_coder.models la clase Curso
+from app_coder.models import Curso   #importo desde app_coder.models la clase Curso
 from app_coder.forms import Curso_formulario
 from django.template import loader
 from django.contrib.auth.forms import AuthenticationForm , UserCreationForm
@@ -118,13 +119,43 @@ def login_request(request):
     
     if request.method =="POST":
 
-        form = AuthenticationForm(request , data=request.POST)
+        form = AuthenticationForm(request , data= request.POST)
 
         if form.is_valid():
-            pass
+            usuario = form.cleaned_data.get("username")
+            contra = form.cleaned_data.get("password")
 
-    
+            user = authenticate(username=usuario , password=contra)
+
+            if user is not None:
+                login (request,user)
+                return render(request , "inicio.html" , {"mensaje":f"Bienvenido {usuario}"})
+
+            else:
+                return HttpResponse("Usuario Incorrecto")
+        else:
+            
+            return HttpResponse(f"Usuario o Contraseña no encontrados.{form}")
     form = AuthenticationForm()
     
     return render(request , "login.html" , {"form":form})
+
+
+def register(request):
+
+    if request.method == "POST":
+
+        form = UserCreationForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return HttpResponse("Usuario Creado")   
+
+
+
+
+
+    else:
+        form = UserCreationForm()
+        return render(request , "registro.html" , {"form":form})
 
