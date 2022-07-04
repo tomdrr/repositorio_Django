@@ -15,7 +15,9 @@ urlpatterns = [
     path("buscar" , views.buscar),
     path("elimina_curso/<int:id>" , views.elimina_curso , name="elimina_curso"),
     path("editar_curso/<int:id>" , views.editar , name="editar_curso"),
-    path("editar_curso/" , views.editar , name="editar_curso")
+    path("editar_curso/" , views.editar , name="editar_curso"),
+    path("login" , views.login_request , name="Login")
+
     
 
 

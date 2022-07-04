@@ -5,6 +5,9 @@ from django.shortcuts import render
 from app_coder.models import *   #importo desde app_coder.models la clase Curso
 from app_coder.forms import Curso_formulario
 from django.template import loader
+from django.contrib.auth.forms import AuthenticationForm , UserCreationForm
+from django.contrib.auth import login , authenticate
+
 # Create your views here.
 
 
@@ -108,3 +111,20 @@ def editar( request , id):
         mi_formulario = Curso_formulario(initial={'nombre':curso.nombre , 'camada':curso.camada})
 
     return render(request , "editar_curso.html" , {"mi_formulario":mi_formulario , "curso": curso})
+
+
+
+def login_request(request):
+    
+    if request.method =="POST":
+
+        form = AuthenticationForm(request , data=request.POST)
+
+        if form.is_valid():
+            pass
+
+    
+    form = AuthenticationForm()
+    
+    return render(request , "login.html" , {"form":form})
+
