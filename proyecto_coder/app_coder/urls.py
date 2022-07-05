@@ -19,7 +19,9 @@ urlpatterns = [
     path("editar_curso/" , views.editar , name="editar_curso"),
     path("login" , views.login_request , name="Login"),
     path("register" , views.register , name="Register"),
-    path("logout" , LogoutView.as_view(template_name="logout.html") , name="Logout")
+    path("logout" , LogoutView.as_view(template_name="logout.html") , name="Logout"),
+    path("editarPerfil" , views.editarPerfil , name="editarPerfil"),
+    path("sobre_mi" , views.sobre_mi , name="sobre_mi")
 
     
 
