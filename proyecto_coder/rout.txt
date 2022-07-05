@@ -1,0 +1,21 @@
+app coder.
+
+solo algunos links visibles si no estan logueados.
+ un apartado sobre mi abajo.
+podemos entrar a los cursos para verlos, pero sin poder agregar, editar o borar nada si no estamos logueados.
+una ves logueados podemos agregar un curso, editarlo o borrarlo.
+
+podemos loguearnos o registrarnos en la pagina de incicio.
+tambien una ves logueados podemos editar nuestro perfil.
+
+en /admin 
+tenemos la base de datos de los cursos cargados y los usuarios.
+
+
+
+user: riverarobles
+mail: --
+pass: Python365
+
+user:invitado
+pass:CoderCoder
